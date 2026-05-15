@@ -22,7 +22,7 @@ public class Gongaga extends Zona {
 
     @Override
     public boolean validarAcceso(Jugador cloud) {
-        return false; // Por defecto no deja entrar
+        return cloud.getNivel() >= 5;
     }
 
 

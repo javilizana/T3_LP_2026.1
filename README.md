@@ -1,6 +1,8 @@
 Nombre: Javiera Lizana Chartier
 Rol: 202473606-k
 
+- Hay un 25% de probabilidad de que salga un 2do enemigo en el simulador.
+
 
 
 

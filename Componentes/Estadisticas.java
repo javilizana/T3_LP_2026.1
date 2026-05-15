@@ -26,6 +26,17 @@ public class Estadisticas {
         }
     }
 
+
+    // Aumenta los stats base al subir de nivel
+    public void subirStats(int bonoHp, int bonoMp, int bonoFuerza, int bonoMagia) {
+        this.hpMaximo += bonoHp;
+        this.hpActual = this.hpMaximo; // Se cura al máximo al subir nivel
+        this.mpMaximo += bonoMp;
+        this.mpActual = this.mpMaximo; // Se recarga MP al máximo
+        this.fuerza += bonoFuerza;
+        this.magia += bonoMagia;
+    }
+
     public int getHpActual () {return hpActual; }
     public int getFuerza() {return fuerza; }
 

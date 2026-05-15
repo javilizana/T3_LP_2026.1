@@ -19,7 +19,7 @@ public class NucleoPlaneta extends Zona {
 
     @Override
     public boolean validarAcceso(Jugador cloud) {
-        return false; // Por defecto no deja entrar
+        return cloud.getNivel() >= 20;
     }
 
     //ELIMINAR DSP

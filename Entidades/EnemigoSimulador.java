@@ -8,7 +8,7 @@ public class EnemigoSimulador extends Enemigo{
         this.nombre = "Soldado Común"; 
         //HP Máximo: 50, MP Máximo: 0, Fuerza: 15, Magia: 0
         this.stats = new Estadisticas(50, 0, 15, 0);
-        this.xpRecompensa = 15;
+        this.xpRecompensa = (int)(Math.random() * 6) + 15;  // 15-20 XP fijo
     }
 
     //verifica que daño no mate a Cloud en el simulador
@@ -39,6 +39,7 @@ public class EnemigoSimulador extends Enemigo{
 
     @Override
     public void giveXpRecompensa(Jugador cloud){
-        //REVISAR DSP
+        System.out.println(this.nombre + " derrotado! Cloud gana " + this.xpRecompensa + " XP.");
+        cloud.recibeXP(this.xpRecompensa);
     }
 }

@@ -48,8 +48,23 @@ public class Jugador {
 
 
     }
-    //Métodos (vacios por ahora) REVISAR DSP
-    public void recibeXP(int xp) {}
+    
+
+    public void recibeXP(int xp) {
+        this.xpActual += xp;
+
+        while (this.xpActual >= 10 * this.nivel) {
+            this.xpActual -= 10 * this.nivel;
+            subirNivel();
+        }
+    }
+
+    private void subirNivel() {
+        this.nivel++;
+        this.stats.subirStats(10, 5, 4, 6);
+        System.out.println(">>> Cloud subió a nivel " + this.nivel + "!!! HP y MP restaurados. <<<");
+        System.out.println(">>> +10 HP Máx | +5 MP Máx | +4 Fuerza | +6 Magia <<<");
+    }
 
     public Arma getBusterSword() { return busterSword; }
     public Estadisticas getStats() { return stats; }
