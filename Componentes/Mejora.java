@@ -6,7 +6,7 @@ public class Mejora {
     private TipoStat statAfectado;
     private int valorBono;
 
-    // Getters y setters básicos
+    // Getters y setters
     public String getNombre() { return nombre; }
     public int getCostoChatarra() { return costoChatarra; }
     public TipoStat getStatAfectado() { return statAfectado; }

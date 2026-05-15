@@ -3,21 +3,28 @@ import Entidades.Jugador;
 import Entidades.EnemigoSimulador;
 import Componentes.Mejora;
 import java.util.List;
-import java.util.ArrayList; //ELIMINAR DSP
+import java.util.ArrayList; 
 import java.util.Scanner;
 
 
 public class Sector7 extends Zona {
     private List<Mejora> tiendaLocal;
 
+    /* Constructor del Sector 7 (zona segura inicial). Inicializa
+       el nombre de la zona y la lista de mejoras de la tienda. */
     public Sector7(){
         this.nombre = "Sector 7";
-        this.tiendaLocal = new ArrayList<>(); //ELIMINAR DSP
+        this.tiendaLocal = new ArrayList<>(); 
     }
 
+    /* Ejecuta el menu principal del Sector 7. Permite a Cloud
+       acceder al Simulador de Combate, a la Tienda de Chatarra,
+       ver sus estadisticas o volver al mapa del mundo.
+       Parametros:
+         cloud   - jugador que esta en la zona
+         scanner - lector de entrada para las opciones del menu */
     @Override
     public void accionZona(Jugador cloud, Scanner scanner){
-        //Scanner scanner = new Scanner(System.in); //REVISAR DSP
         boolean EnSector7 = true; 
 
         while (EnSector7) {
@@ -47,8 +54,6 @@ public class Sector7 extends Zona {
                     scanner.nextLine(); // espera al Enter real
                     break;
                 case 4: //Volver al mapa
-                    //REVISAR DSP
-                    //System.out.println("Regresando al mapa del mundo...");
                     EnSector7 = false;
                     break;
                 case 0:
@@ -61,10 +66,21 @@ public class Sector7 extends Zona {
         }
     }
 
+    /* Valida el acceso al Sector 7. Por ser zona segura inicial,
+       siempre permite entrar sin restricciones.
+       Parametro: cloud - jugador a evaluar.
+       Retorna: true siempre. */
     @Override
     public boolean validarAcceso(Jugador cloud) { return true; }
 
-    //Inicia un combate contra EnemigoSimulador y Cloud realiza un ataque
+    /* Inicia un combate de entrenamiento en el simulador del Sector 7.
+       Genera 1 enemigo siempre, y con 25% de probabilidad un segundo.
+       Cloud puede atacar fisicamente, lanzar magia (en construccion),
+       huir o usar su ataque Limite si la barra esta al 100%. Si Cloud
+       llega a 1 HP, el combate termina sin penalizacion.
+       Parametros:
+         cloud   - jugador que entra al simulador
+         scanner - lector de entrada para elegir acciones */
     public void iniciarSimulador(Jugador cloud, Scanner scanner){
         System.out.println("Entrando al Simulador de Combate...");
 
@@ -158,7 +174,7 @@ public class Sector7 extends Zona {
                 return false;
             });
 
-            // Si no quedan enemigos, victoria
+            // Si no quedan enemigos => victoria
             if (enemigos.isEmpty()) {
                 System.out.println("\nCombate de prueba finalizado con éxito.");
                 EnCombate = false;
@@ -180,9 +196,16 @@ public class Sector7 extends Zona {
         }
     }
 
-    //Metodo para abrir tienda (vacio por ahora) REVISAR DSP
+    /* Abre la tienda de chatarra donde Cloud puede gastar la
+       chatarra obtenida en Gongaga para comprar Mejoras permanentes
+       a sus estadisticas base (HP, MP o Fuerza).
+       Parametro: cloud - jugador que accede a la tienda. */
     public void abrirTienda(Jugador cloud) {}
 
+    /* Lee un entero desde el scanner descartando entradas invalidas.
+       Repite hasta obtener un numero entero valido.
+       Parametro: scanner - lector de entrada.
+       Retorna: el entero ingresado por el usuario. */
     private int leerEntero(Scanner scanner) {
         while (!scanner.hasNextInt()) {
             System.out.print("Entrada invalida, ingresa un numero: ");
@@ -191,11 +214,6 @@ public class Sector7 extends Zona {
         return scanner.nextInt();
     }
 
-
-
-
-
-    //ELIMINAR DSP
     public List<Mejora> getTiendaLocal() {
         return tiendaLocal;
     }

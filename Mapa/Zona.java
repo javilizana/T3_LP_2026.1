@@ -9,8 +9,18 @@ public abstract class Zona {
     protected int nivelRequerido;
     protected List<Enemigo> enemigosDisponibles;
 
-    //public abstract void accionZona(Jugador cloud); //REVISAR DSP
+    /* Metodo abstracto que ejecuta la accion principal de la zona
+       (combate, tienda, exploracion, etc). Cada zona define su
+       propio menu y comportamiento.
+       Parametros:
+         cloud   - jugador que esta explorando la zona
+         scanner - lector de entrada para interactuar con el usuario */
     public abstract void accionZona(Jugador cloud, Scanner scanner);
+    
+     /* Metodo abstracto que valida si Cloud cumple los requisitos
+       (nivel, materias, etc.) para entrar a la zona.
+       Parametro: cloud - jugador a evaluar.
+       Retorna: true si puede acceder, false en caso contrario. */
     public abstract boolean validarAcceso(Jugador cloud);
 
     /* Imprime un header decorativo con el estado actual de Cloud.

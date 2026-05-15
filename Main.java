@@ -5,6 +5,12 @@ import Mapa.Sector7;
 import java.util.Scanner;
 
 public class Main {
+    /* Punto de entrada del juego. Instancia a Cloud, las tres zonas
+       (Sector 7, Gongaga, Nucleo Planeta) y el Scanner para entradas.
+       Arranca al jugador en el Sector 7 y luego ejecuta el bucle
+       principal del Mapa del Mundo que permite viajar entre zonas,
+       respetando las restricciones de nivel.
+       Parametro: args - argumentos de linea de comandos (no usados). */
     public static void main(String[] args){
         //Instanciamos a Cloud y las zonas
         Jugador cloud = new Jugador();
@@ -71,6 +77,10 @@ public class Main {
 
     }
 
+    /* Lee un entero desde el scanner descartando entradas invalidas.
+       Repite hasta obtener un numero entero valido.
+       Parametro: scanner - lector de entrada.
+       Retorna: el entero ingresado por el usuario. */
     private static int leerEntero(Scanner scanner) {
         while (!scanner.hasNextInt()) {
             System.out.print("Entrada invalida, ingresa un numero: ");
